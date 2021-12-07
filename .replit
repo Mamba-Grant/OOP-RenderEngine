@@ -1,0 +1,2 @@
+language = "bash"
+run="cd src; g++ main.cpp && ./a.out"
