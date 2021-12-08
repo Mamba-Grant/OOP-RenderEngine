@@ -29,14 +29,9 @@ class vertex {
 // to calculate faces
 class mesh {
   public:
-		// Mesh Name
 	std::string name;
-		// Vertex List
   std::vector<vertex> vertices;
-		// Index List
 	std::vector<unsigned int> indices;
-
-  std::vector<vertex> polygroups;
 
   mesh() {}
   mesh(std::vector<vertex> v, std::vector<unsigned int> ind)
