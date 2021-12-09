@@ -16,12 +16,22 @@ void display() {
   glRotatef(-20.0, 1.0, 0.0, 0.0);
 
   glBegin(GL_TRIANGLE_STRIP);
+    mesh* cube = new mesh;
+
+
+  std::vector< glm::vec3 > vertices;
+  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+
+
+
+  glBegin(GL_TRIANGLE_STRIP);
+    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
     glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
     glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
     glColor3f(0, 1, 0); glVertex3f(1, 0, 1);
     glColor3f(0, 0, 1); glVertex3f(0, 0, -1.4);
-    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
     glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
+    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
   glEnd();
 
   glPopMatrix();
@@ -43,21 +53,6 @@ void reshape(GLint w, GLint h) {
 }
 
 void init() {
-  GLfloat black[] = { 0.0, 0.0, 0.0, 1.0 };
-  GLfloat yellow[] = { 1.0, 1.0, 0.0, 1.0 };
-  GLfloat cyan[] = { 0.0, 1.0, 1.0, 1.0 };
-  GLfloat white[] = { 1.0, 1.0, 1.0, 1.0 };
-  GLfloat direction[] = { 1.0, 1.0, 1.0, 0.0 };
-
-  glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, cyan);
-  glMaterialfv(GL_FRONT, GL_SPECULAR, white);
-  glMaterialf(GL_FRONT, GL_SHININESS, 30);
-
-  glLightfv(GL_LIGHT0, GL_AMBIENT, black);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, yellow);
-  glLightfv(GL_LIGHT0, GL_SPECULAR, white);
-  glLightfv(GL_LIGHT0, GL_POSITION, direction);
-
   glEnable(GL_LIGHTING); // so the renderer considers light
   glEnable(GL_LIGHT0); // turn LIGHT0 on
   glEnable(GL_DEPTH_TEST); // so the renderer considers depth
@@ -77,9 +72,6 @@ int main(int argc, char** argv) {
   glutDisplayFunc(display);
   init();
   glutMainLoop();
-
-  mesh* cube = new mesh;
-  import((char*)"OBJs/cube.obj", cube);
 /*
   mesh* suzanne = new mesh;
   import((char*)"OBJs/suzanne.obj", cube);
