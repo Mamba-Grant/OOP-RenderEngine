@@ -14,6 +14,6 @@ fi
 #fi
 
 # compile
-g++ main.cpp -o /home/runner/Final-1/src/main.out $(pkg-config glfw3 --cflags --libs)
+g++ main.cpp -o /home/runner/Final-1/src/main.out -lGL -lGLU -lglut
 # run 
-#./main.out
+./main.out
