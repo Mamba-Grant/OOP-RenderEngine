@@ -11,22 +11,7 @@
 void display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
 
-  // Rotate the scene so we can see the tops of the shapes.
-  glRotatef(-20.0, 1.0, 0.0, 0.0);
-
-  glBegin(GL_TRIANGLE_STRIP);
-    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
-    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
-    glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
-    glColor3f(0, 1, 0); glVertex3f(1, 0, 1);
-    glColor3f(0, 0, 1); glVertex3f(0, 0, -1.4);
-    glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
-    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
-  glEnd();
-
-  glPopMatrix();
   glFlush();
 }
 
@@ -53,6 +38,8 @@ void init() {
 
 int main(int argc, char** argv) {
 
+  // ready GLUT window:
+  
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowPosition(80, 80);
@@ -60,11 +47,40 @@ int main(int argc, char** argv) {
   // 16:9 ratio
   glutInitWindowSize(512, 576/2);
   glutCreateWindow("Geometry Testing");
+
+  // initialize GLEW
+  glewInit();
+  
+  mesh* cube = new mesh;
+  import((char*)"OBJs/cube.obj", cube);
+
+  float vertices[] = {
+     0.0f,  0.5f, // Vertex 1 (X, Y)
+     0.5f, -0.5f, // Vertex 2 (X, Y)
+    -0.5f, -0.5f  // Vertex 3 (X, Y)
+  };
+
+  GLuint vao;
+  glGenVertexArrays(1, &vao);
+  glBindVertexArray(vao);
+  glDrawArrays(GL_TRIANGLES, 0, 3);
+
+  //glDrawArrays( GL_TRIANGLES, 0, suzanne->vertices.size() );
+
+  GLuint vbo;
+  glGenBuffers(1, &vbo);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  
+  //glBufferData(GL_ARRAY_BUFFER, suzanne->vertices.size() * sizeof(glm::vec3), &suzanne->vertices[0].position, GL_STATIC_DRAW);
+
   glutReshapeFunc(reshape);
   glutDisplayFunc(display);
   init();
   glutMainLoop();
   
+  //std::cout<<sizeof(glm::vec3)<<std::endl;
+  //std::cout<<glm::to_string(cube->vertices[0].position)<<std::endl
 /*
   mesh* suzanne = new mesh;
   import((char*)"OBJs/suzanne.obj", cube);
@@ -73,6 +89,9 @@ int main(int argc, char** argv) {
   generic_container* obj2 = new generic_container {"obj2", suzanne, obj1};
 
   std::cout<<obj2->parent_ptr->name;*/
-  
+  //glfwTerminate();
   return 0;
 }
+
+// OpenGL thingy: 
+//glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
