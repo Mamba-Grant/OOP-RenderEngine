@@ -14,6 +14,6 @@ fi
 #fi
 
 # compile
-g++ main.cpp -o /home/runner/Final-1/src/main.out -lGL -lGLU -lglut
+g++ main.cpp -o /home/runner/Final-1/src/main.out -lglut -lGL
 # run 
 ./main.out

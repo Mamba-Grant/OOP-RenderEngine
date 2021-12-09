@@ -15,25 +15,14 @@ void display() {
   // Rotate the scene so we can see the tops of the shapes.
   glRotatef(-20.0, 1.0, 0.0, 0.0);
 
-  // add a torus
-  glPushMatrix();
-  glTranslatef(-0.75, 0.5, 0.0);
-  //glRotatef(90.0, 1.0, 0.0, 0.0);
-  glutSolidTorus(0.275, 0.85, 16, 40);
-  glPopMatrix();
-
-  // add a cone
-  glPushMatrix();
-  glTranslatef(-0.75, -0.5, 0.0);
-  //glRotatef(270.0, 1.0, 0.0, 0.0);
-  glutSolidCone(1.0, 2.0, 70, 12);
-  glPopMatrix();
-
-  // Add a sphere
-  glPushMatrix();
-  //glTranslatef(0.75, 0.0, -1.0);
-  glutSolidSphere(1.0, 30, 30);
-  glPopMatrix();
+  glBegin(GL_TRIANGLE_STRIP);
+    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
+    glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
+    glColor3f(0, 1, 0); glVertex3f(1, 0, 1);
+    glColor3f(0, 0, 1); glVertex3f(0, 0, -1.4);
+    glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
+    glColor3f(1, 0, 0); glVertex3f(-1, 0, 1);
+  glEnd();
 
   glPopMatrix();
   glFlush();
@@ -83,7 +72,7 @@ int main(int argc, char** argv) {
   
   // 16:9 ratio
   glutInitWindowSize(512, 576/2);
-  glutCreateWindow("Cyan Shapes in Yellow Light");
+  glutCreateWindow("Geometry Testing");
   glutReshapeFunc(reshape);
   glutDisplayFunc(display);
   init();
