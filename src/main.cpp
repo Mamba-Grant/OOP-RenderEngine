@@ -1,3 +1,4 @@
+#include <GL/glew.h>
 #include "../include/freeglut-3.2.1/include/GL/freeglut.h"
 
 #include "../include/glm/glm.hpp"
@@ -14,15 +15,6 @@ void display() {
 
   // Rotate the scene so we can see the tops of the shapes.
   glRotatef(-20.0, 1.0, 0.0, 0.0);
-
-  glBegin(GL_TRIANGLE_STRIP);
-    mesh* cube = new mesh;
-
-
-  std::vector< glm::vec3 > vertices;
-  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
-
-
 
   glBegin(GL_TRIANGLE_STRIP);
     glColor3f(1, 1, 1); glVertex3f(0, 2, 0);
@@ -72,6 +64,7 @@ int main(int argc, char** argv) {
   glutDisplayFunc(display);
   init();
   glutMainLoop();
+  
 /*
   mesh* suzanne = new mesh;
   import((char*)"OBJs/suzanne.obj", cube);
@@ -83,6 +76,3 @@ int main(int argc, char** argv) {
   
   return 0;
 }
-
-// OpenGL thingy: 
-//glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
