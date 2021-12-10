@@ -85,6 +85,7 @@ void display() {
       0.45f, 0.5f, 0.0f   // top 
   };
 
+  
   mesh* cube = new mesh;
   import( (char*)"OBJs/cube.obj", cube );
 
@@ -93,24 +94,23 @@ void display() {
   glGenBuffers(1, VBOs);
   glGenBuffers(1, IBOs);
 
+  /*
   glBindVertexArray(VAOs[0]);
   glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
   glBufferData(GL_ARRAY_BUFFER, sizeof(firstTriangle), firstTriangle, GL_STATIC_DRAW);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);	// Vertex attributes stay the same
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
-  glBindVertexArray(0);
+  */
   
-  /*
   glBindVertexArray(VAOs[0]);
   glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
   glBufferData(GL_ARRAY_BUFFER, cube->vertices.size() * sizeof(glm::vec3), &cube->vertices[0].position, GL_STATIC_DRAW);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);	// Vertex attributes stay the same
   glEnableVertexAttribArray(0);
   
-
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBOs[0]);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, cube->indices.size() * sizeof(unsigned int), &cube->indices[0], GL_STATIC_DRAW); 
-  */
+
 
     // render
     // ------
@@ -118,13 +118,12 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(shaderProgram);
-    // draw first triangle using the data from the first VAO
-    glBindVertexArray(VAOs[0]);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    
+
     //glBindVertexArray(VAOs[0]);
-    //glDrawArrays(GL_TRIANGLES, 0, cube->indices.size());
-    //glBindVertexArray(0);
+    //glDrawArrays(GL_TRIANGLES, 0, 3);
+    
+    glBindVertexArray(VAOs[0]);
+    glDrawArrays(GL_TRIANGLES, 0, cube->indices.size());
 
     //glDrawElements(GL_TRIANGLES, cube->indices.size(), sizeof(unsigned int),0 );
     

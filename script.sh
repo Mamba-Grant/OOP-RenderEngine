@@ -1,5 +1,5 @@
 # set directory
-cd /home/runner/Final-1/src
+cd /home/runner/Final-2/src
 
 # install freeglut3.x.x - code by qcm (on replit)
 if [ ! -f /home/runner/.apt/usr/lib/x86_64-linux-gnu/libglut.so.3 ]
@@ -14,6 +14,6 @@ then
 fi
 
 # compile
-g++ main.cpp -o /home/runner/Final-1/src/main.out -lGLEW -lglut -lGLU -lGL -g
+g++ main.cpp -o /home/runner/Final-2/src/main.out -lGLEW -lglut -lGLU -lGL -g
 # run 
 ./main.out

@@ -96,7 +96,7 @@ void import(char* filename, mesh* mesh) {
     std::cout<<"v-"<<i+1<<": ";
     std::cout<<glm::to_string(mesh->vertices[tmp_vertexIndices[i]-1].position)<<std::endl;
     if ( (i+1) % 3 == 0) std::cout<<std::endl;
-  }
+  }/*
   
   std::cout<<std::endl;
   
@@ -120,7 +120,7 @@ void import(char* filename, mesh* mesh) {
     std::cout<<"n-"<<i+1<<": ";
     std::cout<<glm::to_string(mesh->vertices[tmp_normalIndices[i]-1].normal)<<std::endl;
     if ( (i+1) % 3 == 0) std::cout<<std::endl;
-  }
+  }*/
   
   printf("Finished Loading: %s:\n",mesh->name.c_str());
 
