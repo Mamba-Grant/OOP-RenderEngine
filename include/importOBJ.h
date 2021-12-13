@@ -93,34 +93,36 @@ void import(char* filename, mesh* mesh) {
     // log vertex progress print function:
 
 
-    std::cout<<"v-"<<i+1<<": ";
-    std::cout<<glm::to_string(mesh->vertices[tmp_vertexIndices[i]-1].position)<<std::endl;
-    if ( (i+1) % 3 == 0) std::cout<<std::endl;
-  }/*
+    //std::cout<<"v-"<<i+1<<": ";
+    //std::cout<<glm::to_string(mesh->vertices[tmp_vertexIndices[i]-1].position)<<std::endl;
+    //if ( (i+1) % 3 == 0) std::cout<<std::endl;
+  }
   
-  std::cout<<std::endl;
+  //std::cout<<std::endl;
   
   for (unsigned int i=0; i<tmp_uvIndices.size(); i++) {
     // set texcoord for each vertex
-    mesh->vertices[tmp_uvIndices[i]-1].texcoord = tmp_UVs[tmp_uvIndices[i]-1];
+    // gives segfault:
+    //mesh->vertices[tmp_uvIndices[i]-1].texcoord = tmp_UVs[tmp_uvIndices[i]-1];
 
     // log uv progress print function:
-    std::cout<<"uv-"<<i+1<<": ";
-    std::cout<<glm::to_string(mesh->vertices[tmp_uvIndices[i]-1].texcoord)<<std::endl;
-    if ( (i+1) % 3 == 0) std::cout<<std::endl;
+    //std::cout<<"uv-"<<i+1<<": ";
+    //std::cout<<glm::to_string(mesh->vertices[tmp_uvIndices[i]-1].texcoord)<<std::endl;
+    //if ( (i+1) % 3 == 0) std::cout<<std::endl;
   }
 
   std::cout<<std::endl;
 
   for (unsigned int i=0; i<tmp_normalIndices.size(); i++) {
     // set texcoord for each vertex
-    mesh->vertices[tmp_normalIndices[i]-1].normal = tmp_normals[tmp_normalIndices[i]-1];
+    // gives segfault:
+    //mesh->vertices[tmp_normalIndices[i]-1].normal = tmp_normals[tmp_normalIndices[i]-1];
 
     // log normal progress print function:
-    std::cout<<"n-"<<i+1<<": ";
-    std::cout<<glm::to_string(mesh->vertices[tmp_normalIndices[i]-1].normal)<<std::endl;
-    if ( (i+1) % 3 == 0) std::cout<<std::endl;
-  }*/
+    //std::cout<<"n-"<<i+1<<": ";
+    //std::cout<<glm::to_string(mesh->vertices[tmp_normalIndices[i]-1].normal)<<std::endl;
+    //if ( (i+1) % 3 == 0) std::cout<<std::endl;
+  }
   
   printf("Finished Loading: %s:\n",mesh->name.c_str());
 
